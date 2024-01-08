@@ -8,10 +8,6 @@ private:
             num = 0;
             for(int i{0};i<26;++i) nodes[i] = nullptr;
         }
-        TrieNode(int num) {
-            this->num = num;
-            for(int i{0};i<26;++i) nodes[i] = nullptr;
-        }
     };
     TrieNode *head{nullptr};
 
@@ -22,6 +18,12 @@ private:
         if(node->num) return false;
         for(int i{0};i<26;++i) if(node->nodes[i]) return false;
         return true;
+    }
+    tuple<TrieNode *, int, int> initialTraverseHelper(string &word) {
+        TrieNode *temp{head};
+        int i{0}, index;
+        while(i<word.size() && temp->nodes[index = getIndex(word[i])]) temp = temp->nodes[index], ++i;
+        return make_tuple(temp, i, index);
     }
     TrieNode *eraseHelper(string &word, int i, TrieNode *th) {
         if(i == word.size()) {
@@ -51,9 +53,12 @@ public:
 
     void insert(string &word){
         // Write your code here.
-        TrieNode *temp = head;
-        int i{0}, index;
-        while(i<word.size() && temp->nodes[index = getIndex(word[i])]) temp = temp->nodes[index], ++i;
+        // TrieNode *temp = head;
+        // int i{0}, index;
+        // while(i<word.size() && temp->nodes[index = getIndex(word[i])]) temp = temp->nodes[index], ++i;
+        int i, index;
+        TrieNode *temp;
+        tie(temp, i, index) = initialTraverseHelper(word);
         for(;i<word.size();++i) {
             index = getIndex(word[i]);
             temp->nodes[index] = new TrieNode();
@@ -64,18 +69,18 @@ public:
 
     int countWordsEqualTo(string &word){
         // Write your code here.
-        TrieNode *temp = head;
-        int i{0}, index;
-        while(i<word.size() && temp->nodes[index = getIndex(word[i])]) temp = temp->nodes[index], ++i;
+        int i, index;
+        TrieNode *temp;
+        tie(temp, i, index) = initialTraverseHelper(word);
         if(i==word.size()) return temp->num;
         return 0;
     }
 
     int countWordsStartingWith(string &word){
         // Write your code here.
-        TrieNode *temp = head;
-        int i{0}, index;
-        while(i<word.size() && temp->nodes[index = getIndex(word[i])]) temp = temp->nodes[index], ++i;
+        int i, index;
+        TrieNode *temp;
+        tie(temp, i, index) = initialTraverseHelper(word);
         if(i==word.size()) return countPrefixHelper(temp);
         return 0;
     }
