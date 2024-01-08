@@ -53,9 +53,6 @@ public:
 
     void insert(string &word){
         // Write your code here.
-        // TrieNode *temp = head;
-        // int i{0}, index;
-        // while(i<word.size() && temp->nodes[index = getIndex(word[i])]) temp = temp->nodes[index], ++i;
         int i, index;
         TrieNode *temp;
         tie(temp, i, index) = initialTraverseHelper(word);
