@@ -1,8 +1,6 @@
 Problem statement
 -----------------
 
-Send feedback
-
 Ninja has to implement a data structure ”TRIE” from scratch. Ninja has to complete some functions.
 
     1) Trie(): Ninja has to initialize the object of this “TRIE” data structure.

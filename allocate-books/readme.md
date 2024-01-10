@@ -1,24 +1,5 @@
-Allocate Books
-==============
-
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 10m
-
-633 upvotes
-
-![Tata Consultancy Services (TCS)](https://files.codingninjas.in/eb7cc776ab7735847aefded71e5d2988.png)![Google](https://files.codingninjas.in/cbb81e76afcc56bfbf860bd1e1ddd295.webp)![ZS Associates](https://files.codingninjas.in/0000000000001980.jpeg)
-
-+8 more companies
-
 Problem statement
 -----------------
-
-Send feedback
 
 Given an array _**‘arr’**_ of integer numbers, ‘arr\[i\]’ represents the number of pages in the ‘i-th’ book.
 

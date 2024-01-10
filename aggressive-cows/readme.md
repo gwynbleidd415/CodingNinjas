@@ -1,30 +1,5 @@
-Aggressive Cows
-===============
-
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 30m
-
-[![profile](https://lh4.googleusercontent.com/-Fq4O0_6_JQY/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rdW32GmcLOpLF_p_xVI41mMy7Vtvg/s96-c/photo.jpg)](/studio/profile/d04967a1-c368-4064-98db-dcab53123432)
-
-Contributed by
-
-Pankaj Sharma
-
-546 upvotes
-
-![Adobe](https://files.codingninjas.in/87ff8e1f4c7028facc82a13858456dc7.webp)![Goldman Sachs](https://files.codingninjas.in/70b9c6bc6061e062f53cece30338e89e.webp)![Dunzo](https://files.codingninjas.in/c197be45962532ecf56f6e5c32459c4a.webp)
-
-+10 more companies
-
 Problem statement
 -----------------
-
-Send feedback
 
 You are given an array **_'arr'_** consisting of **_'n'_** integers which denote the position of a stall.
 

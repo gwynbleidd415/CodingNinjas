@@ -1,30 +1,8 @@
 M-Coloring Problem
 ==================
 
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 15m
-
-[![profile](https://lh6.googleusercontent.com/-VSCxQGXuc_k/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmV2s7bAGI_HzA_K2C8vybo-vNo7A/s96-c/photo.jpg)](/studio/profile/69b9cecb-3360-4f81-8125-2ada19e5972c)
-
-Contributed by
-
-Nishant Chitkara
-
-63 upvotes
-
-![Bank Of America](https://files.codingninjas.in/asset_0000000000001184_1684814817_Bank%2520of%2520america.webp)![Infosys](https://files.codingninjas.in/a457967e81cb61f97c8039d63799d34a.webp)![Editorialist YX](https://files.codingninjas.in/asset_0000000000001366_1685986469_Editorialist.png)
-
-+3 more companies
-
 Problem statement
 -----------------
-
-Send feedback
 
 You are given an undirected graph as an adjacency matrix consisting of _**'v'**_ vertices and an integer _**'m'**_.
 

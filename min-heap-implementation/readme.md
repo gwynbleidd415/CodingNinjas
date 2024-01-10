@@ -1,28 +1,8 @@
 Min Heap Implementation
 =======================
 
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 45m
-
-[![profile](https://lh3.googleusercontent.com/a-/AOh14GionvQ1tBiobL_v2a8CKY4yC6PnsJRwnhV4qDuiNw=s96-c)](/studio/profile/f04993d1-256e-46de-a374-742832381037)
-
-Contributed by
-
-Akhilesh Singh Bhadauria
-
-13 upvotes
-
-![undefined](https://s3-ap-southeast-1.amazonaws.com/codestudio.codingninjas.com/studio/assets/icons/company.svg)
-
 Problem statement
 -----------------
-
-Send feedback
 
 Implement the Min Heap data structure. For information about Heap [click here](https://www.codingninjas.com/codestudio/library/binary-heap).
 

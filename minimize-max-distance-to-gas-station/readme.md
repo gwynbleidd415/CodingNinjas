@@ -1,26 +1,8 @@
 Minimize Max Distance to Gas Station
 ====================================
 
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-[![profile](https://lh3.googleusercontent.com/a/ALm5wu378WI6_7WXMmS3SlI1K2LxX1RMPaP1Gltt6hjQ=s96-c)](/studio/profile/034bea1e-9aef-4a4a-a452-8be27ddfbf17)
-
-Contributed by
-
-Utkarsh Kumar Choubey
-
-137 upvotes
-
-![undefined](https://s3-ap-southeast-1.amazonaws.com/codestudio.codingninjas.com/studio/assets/icons/company.svg)
-
 Problem statement
 -----------------
-
-Send feedback
 
 You are given a sorted array **_‘arr’_** of length **_‘n’_**, which contains positive integer positions of **_‘n’_** gas stations on the X-axis.
 

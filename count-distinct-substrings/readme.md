@@ -1,8 +1,6 @@
 Problem statement
 -----------------
 
-Send feedback
-
 Given a string 'S', you are supposed to return the number of distinct substrings(including empty substring) of the given string. You should implement the program using a trie.
 
 **Note :**

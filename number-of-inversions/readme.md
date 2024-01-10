@@ -1,28 +1,8 @@
 Number of Inversions
 ====================
 
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 40m
-
-[![profile](https://lh3.googleusercontent.com/a/AATXAJzP5EGtJY8oEZsCBWn4dAJT2VTSKIFA4g1OmZze=s96-c)](/studio/profile/e19f6f02-38be-4ac7-a2cc-e53897da7461)
-
-Contributed by
-
-Ratnesh
-
-112 upvotes
-
-![undefined](https://s3-ap-southeast-1.amazonaws.com/codestudio.codingninjas.com/studio/assets/icons/company.svg)
-
 Problem statement
 -----------------
-
-Send feedback
 
 There is an integer array _**‘A’**_ of size _**‘N’**_.
 

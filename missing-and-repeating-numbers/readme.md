@@ -1,26 +1,8 @@
 Missing And Repeating Numbers
 =============================
 
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 30m
-
-[![profile](https://lh3.googleusercontent.com/a/ALm5wu0J2RAvKi5D7SkKiVoxeMkuP5IFXSb6J3R55ynS=s96-c)](/studio/profile/19ddbe5e-db0c-4dab-a7a5-432b5be48361)
-
-Contributed by
-
-Prashant Thakur
-
-75 upvotes
-
 Problem statement
 -----------------
-
-Send feedback
 
 You are given an array of _**‘N’** _integers where each integer value is between ‘1’ and ‘N’.__
 

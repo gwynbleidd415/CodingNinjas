@@ -1,26 +1,8 @@
 Subarrays with XOR ‘K’
 ======================
 
-Easy
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-0/40
-
-Average time to solve is 20m
-
-[![profile](https://lh3.googleusercontent.com/a/ALm5wu0J2RAvKi5D7SkKiVoxeMkuP5IFXSb6J3R55ynS=s96-c)](/studio/profile/19ddbe5e-db0c-4dab-a7a5-432b5be48361)
-
-Contributed by
-
-Prashant Thakur
-
-79 upvotes
-
 Problem statement
 -----------------
-
-Send feedback
 
 Given an array _**‘A’**_ consisting of _**‘N’**_ integers and an integer _**‘B’**_, find the number of subarrays of array ‘A’ whose bitwise XOR( ⊕ ) of all elements is equal to ‘B’.
 
