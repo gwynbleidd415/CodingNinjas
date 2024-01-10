@@ -7,13 +7,25 @@ bool solution1(int n, int k, vector<int> &arr) {
     for(int i{1};i<n;++i) {
         for(int j{1};j<=k;++j) {
             dp[i][j] = arr[i] > j ? dp[i-1][j] : (dp[i-1][j] || dp[i-1][j-arr[i]]);
-            if(arr[i] < j) continue;
         }
     }
     return dp.back().back();
 }
+bool solution2(int n, int k, vector<int> &arr) {
+    vector<bool> dp(k+1);
+    dp[0] = true;
+    for(int i{0};i<n;++i) {
+        for(int j{k};j>0;--j) {
+            if(arr[i] <= j) {
+                dp[j] = dp[j] || dp[j-arr[i]];
+            }
+        }
+    }
+    return dp.back();
+}
 
 bool subsetSumToK(int n, int k, vector<int> &arr) {
     // Write your code here.
-    return solution1(n, k, arr);
+    // return solution1(n, k, arr);
+    return solution2(n, k, arr);
 }
