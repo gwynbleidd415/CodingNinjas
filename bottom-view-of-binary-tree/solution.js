@@ -123,7 +123,7 @@ function main() {
     }
     front.left = th1;
     front.right = th2;
-    qu.print();
+    // qu.print();
   }
   while (!qu.isEmpty()) qu.pop();
 
@@ -132,12 +132,12 @@ function main() {
   eg: let x = example(var_name, arr);
   */
 
-  // const ans = solution1(head);
+  const ans = solution1(head);
 
   /*
   Log your output here 
   eg: console.log(x);
   */
-  // console.log(ans.join(' '));
+  console.log(ans.join(' '));
 
 }
