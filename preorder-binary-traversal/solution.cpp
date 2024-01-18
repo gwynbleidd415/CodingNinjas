@@ -48,8 +48,32 @@ vector<int> solution2(TreeNode<int> * root){
     return ans;
 }
 
+vector<int> solution3(TreeNode<int> * root){
+    // Write your code here.
+    vector<int> ans;
+    TreeNode<int> *curr{root}, *prev;
+    while(curr) {
+        ans.push_back(curr->data);
+        if(curr->left == nullptr) {
+            curr = curr->right;
+        } else if(curr->right == nullptr) {
+            curr = curr->left;
+        } else {
+            prev = curr->left;
+            while(prev->right || prev->left) {
+                if(prev->right) prev = prev->right;
+                else prev = prev->left;
+            }
+            prev->right = curr->right;
+            curr = curr->left;
+        }
+    }
+    return ans;
+}
+
 vector<int> preOrder(TreeNode<int> * root){
     // Write your code here.
     // return solution1(root);
+    // return solution2(root);
     return solution2(root);
 }
