@@ -71,9 +71,36 @@ vector<int> solution3(TreeNode<int> * root){
     return ans;
 }
 
+vector<int> solution4(TreeNode<int> * root){
+    // Write your code here.
+    vector<int> ans;
+    TreeNode<int> *curr{root}, *prev;
+    while(curr) {
+        if(curr->left == nullptr) {
+            ans.push_back(curr->data);
+            curr = curr->right;
+        } else {
+            prev = curr->left;
+            while(prev->right && prev->right != curr) {
+                prev = prev->right;
+            }
+            if(prev->right == nullptr) {
+                ans.push_back(curr->data);
+                prev->right = curr;
+                curr = curr->left;
+            } else {
+                prev->right = nullptr;
+                curr = curr->right;
+            }
+        }
+    }
+    return ans;
+}
+
 vector<int> preOrder(TreeNode<int> * root){
     // Write your code here.
     // return solution1(root);
     // return solution2(root);
-    return solution2(root);
+    // return solution3(root);
+    return solution4(root);
 }
