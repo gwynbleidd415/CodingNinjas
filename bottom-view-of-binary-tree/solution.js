@@ -139,5 +139,4 @@ function main() {
   eg: console.log(x);
   */
   console.log(ans.join(' '));
-
 }
