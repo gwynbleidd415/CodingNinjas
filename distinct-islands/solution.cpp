@@ -1,4 +1,5 @@
 #include <unordered_set>
+#include <queue>
 
 class DisjointSet {
 private:
@@ -93,7 +94,6 @@ int solution1(int** arr, int n, int m)
 {
     //Write your code here
     unordered_set<string> uset;
-    // bool visited[n][m] = {false};
     bool **visited;
     visited = new bool*[n];
     for(int i{0};i<n;++i) visited[i] = new bool[m];
@@ -120,58 +120,101 @@ int solution1(int** arr, int n, int m)
     return ans;
 }
 
-int *solution2Helper(int** arr, bool** visited, string &str, int n, int m, int i, int j) {
+void solution2Helper(int** arr, bool** visited, string &str, int n, int m, int i, int j) {
     visited[i][j] = true;
-    int *tlbr;
-    tlbr = new int[4];
-    tlbr[0] = i, tlbr[1] = j, tlbr[2] = i, tlbr[3] = j;
-    int *tlbrc;
     if(i>0 && arr[i-1][j] == 1 && !visited[i-1][j]) {
         str.push_back('u');
-        tlbrc = solution2Helper(arr, visited, str, n, m, i-1, j);
+        solution2Helper(arr, visited, str, n, m, i-1, j);
         str.push_back('b');
-        tlbr[0] = min(tlbr[0], tlbrc[0]);
-        tlbr[1] = min(tlbr[1], tlbrc[1]);
-        tlbr[2] = max(tlbr[2], tlbrc[2]);
-        tlbr[3] = max(tlbr[3], tlbrc[3]);
     }
     if(j>0 && arr[i][j-1] == 1 && !visited[i][j-1]) {
         str.push_back('l');
-        tlbrc = solution2Helper(arr, visited, str, n, m, i, j-1);
+        solution2Helper(arr, visited, str, n, m, i, j-1);
         str.push_back('b');
-        tlbr[0] = min(tlbr[0], tlbrc[0]);
-        tlbr[1] = min(tlbr[1], tlbrc[1]);
-        tlbr[2] = max(tlbr[2], tlbrc[2]);
-        tlbr[3] = max(tlbr[3], tlbrc[3]);
 
     }
     if(i+1<n && arr[i+1][j] == 1 && !visited[i+1][j]) {
         str.push_back('d');
-        tlbrc = solution2Helper(arr, visited, str, n, m, i+1, j);
+        solution2Helper(arr, visited, str, n, m, i+1, j);
         str.push_back('b');
-        tlbr[0] = min(tlbr[0], tlbrc[0]);
-        tlbr[1] = min(tlbr[1], tlbrc[1]);
-        tlbr[2] = max(tlbr[2], tlbrc[2]);
-        tlbr[3] = max(tlbr[3], tlbrc[3]);
 
     }
     if(j+1<m && arr[i][j+1] == 1 && !visited[i][j+1]) {
         str.push_back('r');
-        tlbrc = solution2Helper(arr, visited, str, n, m, i, j+1);
+        solution2Helper(arr, visited, str, n, m, i, j+1);
         str.push_back('b');
-        tlbr[0] = min(tlbr[0], tlbrc[0]);
-        tlbr[1] = min(tlbr[1], tlbrc[1]);
-        tlbr[2] = max(tlbr[2], tlbrc[2]);
-        tlbr[3] = max(tlbr[3], tlbrc[3]);
     }
-    return tlbr;
 }
 
 int solution2(int** arr, int n, int m)
 {
     //Write your code here
     unordered_set<string> uset;
-    // bool visited[n][m] = {false};
+    bool **visited;
+    visited = new bool*[n];
+    for(int i{0};i<n;++i) visited[i] = new bool[m];
+    for(int i{0};i<n;++i) {
+        for(int j{0};j<m;++j) {
+            visited[i][j] = false;
+        }
+    }
+    string str;
+    int ans{0};
+    for(int i{0};i<n;++i) {
+        for(int j{0};j<m;++j) {
+            if(arr[i][j] == 0 || visited[i][j]) continue;
+            str = "c";
+            solution2Helper(arr, visited, str, n, m, i, j);
+            if(uset.find(str) == uset.end()) {
+                ++ans;
+                uset.insert(str);
+            }
+        }
+    }
+    return ans;
+}
+
+int *solution3Helper(int** arr, bool** visited, DisjointSet &dj, int n, int m, int ii, int jj) {
+    visited[ii][jj] = true;
+    queue<pair<int, int>> qu;
+    qu.push({ii, jj});
+    int i, j;
+    int *tlbr;
+    tlbr = new int[4];
+    tlbr[0] = ii, tlbr[1] = jj, tlbr[2] = ii, tlbr[3] = jj;
+    while(!qu.empty()) {
+        i = qu.front().first, j = qu.front().second, qu.pop();
+        tlbr[0] = min(tlbr[0], i);
+        tlbr[1] = min(tlbr[1], j);
+        tlbr[2] = max(tlbr[2], i);
+        tlbr[3] = max(tlbr[3], j);
+        dj.unite(ii, jj, i, j);
+        if(i>0 && arr[i-1][j] == 1 && !visited[i-1][j]) {
+            visited[i-1][j] = true;
+            qu.push({i-1, j});
+        }
+        if(j>0 && arr[i][j-1] == 1 && !visited[i][j-1]) {
+            visited[i][j-1] = true;
+            qu.push({i, j-1});
+
+        }
+        if(i+1<n && arr[i+1][j] == 1 && !visited[i+1][j]) {
+            visited[i+1][j] = true;
+            qu.push({i+1, j});
+
+        }
+        if(j+1<m && arr[i][j+1] == 1 && !visited[i][j+1]) {
+            visited[i][j+1] = true;
+            qu.push({i, j+1});
+        }
+    }
+    return tlbr;
+}
+
+int solution3(int** arr, int n, int m)
+{
+    //Write your code here
+    unordered_set<string> uset;
     bool **visited;
     visited = new bool*[n];
     for(int i{0};i<n;++i) visited[i] = new bool[m];
@@ -182,12 +225,13 @@ int solution2(int** arr, int n, int m)
     }
     int *tlbr;
     string str;
+    DisjointSet dj(n, m);
     int ans{0};
     for(int i{0};i<n;++i) {
         for(int j{0};j<m;++j) {
             if(arr[i][j] == 0 || visited[i][j]) continue;
-            str = "c";
-            tlbr = solution2Helper(arr, visited, str, n, m, i, j);
+            tlbr = solution3Helper(arr, visited, dj, n, m, i, j);
+            str = constructString(arr, tlbr, dj, i, j);
             if(uset.find(str) == uset.end()) {
                 ++ans;
                 uset.insert(str);
@@ -201,5 +245,6 @@ int distinctIslands(int** arr, int n, int m)
 {
     //Write your code here
     // return solution1(arr, n, m);
-    return solution2(arr, n, m);
+    // return solution2(arr, n, m);
+    return solution3(arr, n, m);
 }
