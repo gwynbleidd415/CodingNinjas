@@ -120,8 +120,86 @@ int solution1(int** arr, int n, int m)
     return ans;
 }
 
+int *solution2Helper(int** arr, bool** visited, string &str, int n, int m, int i, int j) {
+    visited[i][j] = true;
+    int *tlbr;
+    tlbr = new int[4];
+    tlbr[0] = i, tlbr[1] = j, tlbr[2] = i, tlbr[3] = j;
+    int *tlbrc;
+    if(i>0 && arr[i-1][j] == 1 && !visited[i-1][j]) {
+        str.push_back('u');
+        tlbrc = solution2Helper(arr, visited, str, n, m, i-1, j);
+        str.push_back('b');
+        tlbr[0] = min(tlbr[0], tlbrc[0]);
+        tlbr[1] = min(tlbr[1], tlbrc[1]);
+        tlbr[2] = max(tlbr[2], tlbrc[2]);
+        tlbr[3] = max(tlbr[3], tlbrc[3]);
+    }
+    if(j>0 && arr[i][j-1] == 1 && !visited[i][j-1]) {
+        str.push_back('l');
+        tlbrc = solution2Helper(arr, visited, str, n, m, i, j-1);
+        str.push_back('b');
+        tlbr[0] = min(tlbr[0], tlbrc[0]);
+        tlbr[1] = min(tlbr[1], tlbrc[1]);
+        tlbr[2] = max(tlbr[2], tlbrc[2]);
+        tlbr[3] = max(tlbr[3], tlbrc[3]);
+
+    }
+    if(i+1<n && arr[i+1][j] == 1 && !visited[i+1][j]) {
+        str.push_back('d');
+        tlbrc = solution2Helper(arr, visited, str, n, m, i+1, j);
+        str.push_back('b');
+        tlbr[0] = min(tlbr[0], tlbrc[0]);
+        tlbr[1] = min(tlbr[1], tlbrc[1]);
+        tlbr[2] = max(tlbr[2], tlbrc[2]);
+        tlbr[3] = max(tlbr[3], tlbrc[3]);
+
+    }
+    if(j+1<m && arr[i][j+1] == 1 && !visited[i][j+1]) {
+        str.push_back('r');
+        tlbrc = solution2Helper(arr, visited, str, n, m, i, j+1);
+        str.push_back('b');
+        tlbr[0] = min(tlbr[0], tlbrc[0]);
+        tlbr[1] = min(tlbr[1], tlbrc[1]);
+        tlbr[2] = max(tlbr[2], tlbrc[2]);
+        tlbr[3] = max(tlbr[3], tlbrc[3]);
+    }
+    return tlbr;
+}
+
+int solution2(int** arr, int n, int m)
+{
+    //Write your code here
+    unordered_set<string> uset;
+    // bool visited[n][m] = {false};
+    bool **visited;
+    visited = new bool*[n];
+    for(int i{0};i<n;++i) visited[i] = new bool[m];
+    for(int i{0};i<n;++i) {
+        for(int j{0};j<m;++j) {
+            visited[i][j] = false;
+        }
+    }
+    int *tlbr;
+    string str;
+    int ans{0};
+    for(int i{0};i<n;++i) {
+        for(int j{0};j<m;++j) {
+            if(arr[i][j] == 0 || visited[i][j]) continue;
+            str = "c";
+            tlbr = solution2Helper(arr, visited, str, n, m, i, j);
+            if(uset.find(str) == uset.end()) {
+                ++ans;
+                uset.insert(str);
+            }
+        }
+    }
+    return ans;
+}
+
 int distinctIslands(int** arr, int n, int m)
 {
     //Write your code here
-    return solution1(arr, n, m);
+    // return solution1(arr, n, m);
+    return solution2(arr, n, m);
 }
