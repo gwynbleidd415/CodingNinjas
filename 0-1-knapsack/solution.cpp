@@ -1,7 +1,6 @@
 #include <bits/stdc++.h> 
 int solution1(vector<int> weight, vector<int> value, int n, int maxWeight) 
 {
-	// Write your code here
 	vector<vector<int>> dp(n, vector<int>(maxWeight + 1));
 	if(weight.front() <= maxWeight) {
 		for(int i{weight.front()};i<=maxWeight;++i)
@@ -16,7 +15,6 @@ int solution1(vector<int> weight, vector<int> value, int n, int maxWeight)
 }
 int solution2(vector<int> weight, vector<int> value, int n, int maxWeight) 
 {
-	// Write your code here
 	vector<int> dp(maxWeight + 1);
 	for(int i{weight.front()};i<=maxWeight;++i) dp[i] = value.front();
 	for(int i{1};i<n;++i) {
