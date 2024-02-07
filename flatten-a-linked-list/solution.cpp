@@ -61,9 +61,45 @@ Node* solution2(Node* head)
 	return ans.child;
 }
 
+Node *merge(Node *left, Node *right) {
+	Node ans;
+	Node *temp = &ans;
+	while(left && right) {
+		if(right->data < left->data) temp->child = right, right = right->child;
+		else temp->child = left, left = left->child;
+		temp = temp->child;
+	}
+	if(left) temp->child = left;
+	if(right) temp->child = right;
+	return ans.child;
+}
+
+Node *mergeSort(Node *head, Node *tail) {
+	if (head == tail) {
+		head->next = nullptr;
+		return head;
+	}
+	Node *slow{head}, *fast{head->next};
+	while(fast!=tail->next && fast!=tail) {
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	Node *slowNext = slow->next;
+	Node *left = mergeSort(head, slow);
+	Node *right = mergeSort(slowNext, tail);
+	return merge(left, right);
+}
+
+Node *solution3(Node *head) {
+	Node *tail{head};
+	while(tail->next) tail = tail->next;
+	return mergeSort(head, tail);
+}
+
 Node* flattenLinkedList(Node* head) 
 {
 	// Write your code here
 	// return solution1(head);
-	return solution2(head);
+	// return solution2(head);
+	return solution3(head);
 }
