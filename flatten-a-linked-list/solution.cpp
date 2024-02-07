@@ -34,8 +34,36 @@ Node *solution1(Node *head) {
 	return ans.child;
 }
 
+Node* solution2(Node* head) 
+{
+	// Write your code here
+	Node *thead = new Node(0, head, nullptr);
+	Node ans;
+	Node *csmall, *temp, *cstemp;
+	temp = &ans;
+	while(thead->next) {
+		csmall = thead;
+		cstemp = csmall->next;
+		while(cstemp->next) {
+			if(cstemp->next->data < csmall->next->data) csmall = cstemp;
+			cstemp = cstemp->next;
+		}
+		temp->child = csmall->next;
+		temp = temp->child;
+		if(csmall->next->child) {
+			csmall->next->child->next = csmall->next->next;
+			csmall->next = csmall->next->child;
+		} else {
+			csmall->next = csmall->next->next;
+		}
+		temp->next = nullptr;
+	}
+	return ans.child;
+}
+
 Node* flattenLinkedList(Node* head) 
 {
 	// Write your code here
-	return solution1(head);
+	// return solution1(head);
+	return solution2(head);
 }
