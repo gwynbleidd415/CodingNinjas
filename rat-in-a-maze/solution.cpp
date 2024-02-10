@@ -10,18 +10,19 @@ bool isValid(int row, int col, vector<vector<bool>> &visited, vector<vector<int>
 void solution1Helper(int row, int col, string &curr, vector<string> &ans, vector<vector<bool>> &visited, vector<vector<int>> &mat) {
     if(row == mat.size()-1 && col == mat.front().size()-1) {
         ans.push_back(curr);
+        return;
     }
+    visited[row][col] = true;
     int x, y;
     for(int i{0};i<4;++i) {
         x = dx[i] + row, y = dy[i] + col;
         if(isValid(x, y, visited, mat)) {
             curr.push_back(direction[i]);
-            visited[x][y] = true;
             solution1Helper(x, y, curr, ans, visited, mat);
-            visited[x][y] = false;
             curr.pop_back();
         }
     }
+    visited[row][col] = false;
 }
 
 vector<string> solution1(vector<vector<int>> &mat) {
