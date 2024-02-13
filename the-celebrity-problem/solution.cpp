@@ -28,7 +28,27 @@ int solution1(int n) {
 	}
 	return f1;
 }
+
+int solution2(int n) {
+ 	// Write your code here.
+	int citr{0};
+	for(int i{1};i<n;++i) {
+		if(knows(citr, i)) {
+			if(knows(i, citr)) citr = i+1, ++i;
+			else citr = i;
+		} else if(!knows(i, citr)) {
+			citr = i+1, ++i;
+		}
+	}
+	if(citr == n) return -1;
+	for(int i{0};i<n;++i) {
+		if(i == citr) continue;
+		if(!knows(i, citr) || knows(citr, i)) return -1;
+	}
+	return citr;
+}
 int findCelebrity(int n) {
  	// Write your code here.
-	return solution1(n);
+	// return solution1(n);
+	return solution2(n);
 }
