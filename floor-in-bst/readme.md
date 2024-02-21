@@ -1,24 +1,8 @@
 Floor in BST
 ============
 
-Moderate
-
-![](https://files.codingninjas.in/yellow-spark-22969.svg)
-
-80/80
-
-Average time to solve is 30m
-
-64 upvotes
-
-Asked in companies
-
-![Infosys](https://files.codingninjas.in/a457967e81cb61f97c8039d63799d34a.webp)![Virsoftech Private Limited](https://files.codingninjas.in/vir-softech-15221.webp)
-
 Problem statement
 -----------------
-
-Send feedback
 
 You are given a BST (Binary search tree) with’ N’ number of nodes and a value ‘X’. Your task is to find the greatest value node of the BST which is smaller than or equal to ‘X’.
 
